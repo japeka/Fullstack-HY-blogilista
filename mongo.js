@@ -32,14 +32,6 @@ const blogSchema = new mongoose.Schema({
   
 const Blog = mongoose.model('Blog', blogSchema)
 
-
-// const noteSchema = new mongoose.Schema({
-//   content: String,
-//   date: Date,
-//   important: Boolean,
-// })
-
-// const Blog = mongoose.model('Blog', blogSchema)
 Blog.find({}).then(result => {
   result.forEach(blog => {
     console.log(blog)
@@ -63,17 +55,4 @@ Blog.find({}).then(result => {
 //     content: String,
 //     date: Date,
 //     important: Boolean,
-//   })
-
-//   const Note = mongoose.model('Note', noteSchema)
-
-//   const note = new Note({
-//     content: 'HTML is Easy',
-//     date: new Date(),
-//     important: true,
-//   })
-
-//   note.save().then(result => {
-//     console.log('note saved!')
-//     mongoose.connection.close()
 //   })
