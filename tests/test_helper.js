@@ -2,13 +2,13 @@ const Blog = require('../models/blog')
 
 const initialBlogs = [
   {
-    title: 'first blog',
+    title: 'first blog written',
     author: 'andy warfork',
     url: 'http://abc123.com',
     likes: 1
   },
   {
-    title: 'second blog',
+    title: 'second blog shouted out',
     author: 'carl perkings',
     url: 'http://carl.com',
     likes: 5
