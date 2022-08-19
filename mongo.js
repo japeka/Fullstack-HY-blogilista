@@ -38,21 +38,3 @@ Blog.find({}).then(result => {
   })
   mongoose.connection.close()
 })
-
-// const blog = new Blog({
-//     title: "second blog",
-//     author: "arik",
-//     url: "http://abc123.com",
-//     likes: 1
-// })
-
-// blog.save().then((result) => {
-//   console.log('blog saved!', result)
-//   mongoose.connection.close()
-// })
-
-//   const noteSchema = new mongoose.Schema({
-//     content: String,
-//     date: Date,
-//     important: Boolean,
-//   })

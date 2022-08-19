@@ -1,9 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbm5lazEwMCIsImlkIjoiNjJmZDI3YTQxZjMyOWYyOWU5YzgyY2FiIiwiaWF0IjoxNjYwODQ5MDAzLCJleHAiOjE2NjA4NTI2MDN9.MzV1O0HG_3YTyIv2JIB0IhcEzKsf5l5n6KqCqMi3V74
 
 {
-    "title": "fourth blog",
-    "author": "ollik",
-    "url": "http://ollik.fi",
-    "likes": 2
+    "title": "jormakemp",
+    "author": "jormakemp",
+    "url": "http://jorma.fi",
+    "likes": 12
 }

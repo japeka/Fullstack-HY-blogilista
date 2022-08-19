@@ -4,7 +4,9 @@ const app = express()
 require('express-async-errors')
 const cors = require('cors')
 const blogsRouter = require('./controllers/blogs')
-const middleware = require('./utils/middleware')
+const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
+const {requestLogger,unknownEndpoint,errorHandler } = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
@@ -23,11 +25,16 @@ mongoose
 
 app.use(cors())
 app.use(express.json())
-app.use(middleware.requestLogger)
 
+app.use(requestLogger)
+
+
+//tokenExtractor,userExtractor not included here because we want to keep route of /api/blogs tokenless and userless
 app.use('/api/blogs', blogsRouter)
+app.use('/api/login', loginRouter)
+app.use('/api/users', usersRouter)
 
-app.use(middleware.unknownEndpoint)
-app.use(middleware.errorHandler)
+app.use(unknownEndpoint)
+app.use(errorHandler)
 
 module.exports = app
