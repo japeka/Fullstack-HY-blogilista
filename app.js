@@ -1,5 +1,6 @@
 const config = require('./utils/config')
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 require('express-async-errors')
 const cors = require('cors')
@@ -23,11 +24,13 @@ mongoose
     console.log('error connecting to MongoDB:', error.message)
   })
 
+
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }))  
+app.use(bodyParser.json())
 
 app.use(requestLogger)
-
 
 //tokenExtractor,userExtractor not included here because we want to keep route of /api/blogs tokenless and userless
 app.use('/api/blogs', blogsRouter)

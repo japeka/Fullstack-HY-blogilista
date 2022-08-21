@@ -4,15 +4,13 @@ const User = require('../models/user')
 const jwt  = require('jsonwebtoken')
 const { tokenExtractor, userExtractor } = require('./../utils/middleware')
 
-/*tokenless & userless free route */ 
 blogsRouter.get('/', async (request, response) => {
     const blogs = await Blog.find({})
       .populate('user', { blogs: 0 })
     response.json(blogs)
 })
   
-/*token & user info required */ 
-blogsRouter.post('/', tokenExtractor, userExtractor, async (request, response) => {
+blogsRouter.post('/',tokenExtractor, userExtractor, async (request, response) => {
     const user = request.user
     if(!user.id) {
       response.status(400).json({error: 'invalid token'})  
@@ -42,7 +40,6 @@ blogsRouter.post('/', tokenExtractor, userExtractor, async (request, response) =
     response.status(201).json(savedBlog)
 })
 
-/*token & user info required */ 
 blogsRouter.delete('/:id', tokenExtractor, userExtractor, async (request, response) => {
   const user = request.user
   if(!user.id) {

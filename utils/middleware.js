@@ -26,14 +26,14 @@ const requestLogger = (request, response, next) => {
 }
 
 const tokenExtractor = (request, response, next) => {
-  const authorization = request.get('authorization')
+  const authorization = request.headers.authorization
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     request['token'] = authorization.substring(7)
   }
   next()
 }
 
-const userExtractor = (request, response, next) => {
+const userExtractor =  (request, response, next) => {
   const token = request.token
   const decodedToken = jwt.verify(token, process.env.SECRET) 
   if (token && decodedToken.id) {
