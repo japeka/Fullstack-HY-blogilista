@@ -13,16 +13,16 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/',tokenExtractor, userExtractor, async (request, response) => {
     const user = request.user
     if(!user.id) {
-      response.status(400).json({error: 'invalid token'})  
+      return response.status(400).json({error: 'invalid token'})  
     }
 
     const existingUser = await User.findById(user.id)
     if(!existingUser.id) {
-      response.status(400).json({error: 'user not found from database'})  
+      return response.status(400).json({error: 'user not found from database'})  
     }
 
     if(!request.body.title || !request.body.url) {
-      response.status(400).json({error: 'title or url are required'})  
+      return response.status(400).json({error: 'title or url are required'})  
     } 
 
     const blog = new Blog({
@@ -43,12 +43,12 @@ blogsRouter.post('/',tokenExtractor, userExtractor, async (request, response) =>
 blogsRouter.delete('/:id', tokenExtractor, userExtractor, async (request, response) => {
   const user = request.user
   if(!user.id) {
-    response.status(400).json({error: 'invalid token'})  
+    return response.status(400).json({error: 'invalid token'})  
   }
 
   const existingUser = await User.findById(user.id)
   if(!existingUser.id) {
-    response.status(400).json({error: 'user not found from database'})  
+    return response.status(400).json({error: 'user not found from database'})  
   }
   const blog = await Blog.findOne({user: existingUser._id})
   if(!blog) {
@@ -61,11 +61,11 @@ blogsRouter.delete('/:id', tokenExtractor, userExtractor, async (request, respon
 blogsRouter.put('/:id', tokenExtractor, userExtractor, async (request, response) => {
   const user = request.user
   if(!user.id) {
-    response.status(400).json({error: 'invalid token'})  
+    return response.status(400).json({error: 'invalid token'})  
   }
   const existingUser = await User.findById(user.id)
   if(!existingUser.id) {
-    response.status(400).json({error: 'user not found from database'})  
+    return response.status(400).json({error: 'user not found from database'})  
   }
 
   const { likes } = request.body
