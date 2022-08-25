@@ -35,9 +35,13 @@ const tokenExtractor = (request, response, next) => {
 
 const userExtractor =  (request, response, next) => {
   const token = request.token
-  const decodedToken = jwt.verify(token, process.env.SECRET) 
-  if (token && decodedToken.id) {
-    request['user'] = decodedToken
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET) 
+    if (token && decodedToken.id) {
+        request['user'] = decodedToken
+    }
+  } catch(exception) {
+    next(exception)
   }
   next()
 }

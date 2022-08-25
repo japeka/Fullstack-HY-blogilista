@@ -67,14 +67,16 @@ blogsRouter.put('/:id', tokenExtractor, userExtractor, async (request, response)
   if(!existingUser.id) {
     return response.status(400).json({error: 'user not found from database'})  
   }
-
   const { likes } = request.body
   const updatedBlog = await Blog.findByIdAndUpdate(
     request.params.id,
     {likes},
     { new: true, runValidators: true, context: 'query' }
   )
-  response.json(updatedBlog)
+  const responseObject = 
+    {id: updatedBlog._id, title: updatedBlog.title, author:  updatedBlog.author, url: updatedBlog.url, likes: updatedBlog.likes, 
+     user: {id: existingUser.id.toString(),username: existingUser.username,name: existingUser.name}}  
+  return response.json(responseObject)
 })
 
 module.exports = blogsRouter
