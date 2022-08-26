@@ -74,8 +74,18 @@ blogsRouter.put('/:id', tokenExtractor, userExtractor, async (request, response)
     { new: true, runValidators: true, context: 'query' }
   )
   const responseObject = 
-    {id: updatedBlog._id, title: updatedBlog.title, author:  updatedBlog.author, url: updatedBlog.url, likes: updatedBlog.likes, 
-     user: {id: existingUser.id.toString(),username: existingUser.username,name: existingUser.name}}  
+    {
+      id: updatedBlog._id, 
+      title: updatedBlog.title, author:  
+      updatedBlog.author, 
+      url: updatedBlog.url, 
+      likes: updatedBlog.likes, 
+      user: {
+          id: existingUser.id.toString(),
+          username: existingUser.username,
+          name: existingUser.name
+      }}  
+
   return response.json(responseObject)
 })
 
