@@ -54,6 +54,7 @@ blogsRouter.delete('/:id', tokenExtractor, userExtractor, async (request, respon
   if(!blog) {
     return response.status(401).json({ error: 'deletion can be only performed by user who created the blog' })
   }
+  
   await Blog.findByIdAndRemove(request.params.id)
   response.status(204).end()
 })
@@ -73,20 +74,8 @@ blogsRouter.put('/:id', tokenExtractor, userExtractor, async (request, response)
     {likes},
     { new: true, runValidators: true, context: 'query' }
   )
-  const responseObject = 
-    {
-      id: updatedBlog._id, 
-      title: updatedBlog.title, author:  
-      updatedBlog.author, 
-      url: updatedBlog.url, 
-      likes: updatedBlog.likes, 
-      user: {
-          id: existingUser.id.toString(),
-          username: existingUser.username,
-          name: existingUser.name
-      }}  
 
-  return response.json(responseObject)
+  return response.json(updatedBlog)
 })
 
 module.exports = blogsRouter
