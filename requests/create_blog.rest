@@ -1,6 +1,5 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbm5lazEwMCIsImlkIjoiNjMxOWZlMGEwMjk2YTgzYTljYjMwNWZkIiwiaWF0IjoxNjYyNjQ3ODMxLCJleHAiOjE2NjI2NTE0MzF9.zrMnrFNwgzia87edW1MsWxPkrCn4hIqUgs9Z-YalZhE
 
 {
     "title": "mammab1234",

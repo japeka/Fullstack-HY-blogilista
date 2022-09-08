@@ -1,8 +1,5 @@
 POST http://localhost:3003/api/blogs/631a1e17568a008142979545/comments
  
-Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imphbm5lazEwMCIsImlkIjoiNjMxOWZlMGEwMjk2YTgzYTljYjMwNWZkIiwiaWF0IjoxNjYyNjU5MDM1LCJleHAiOjE2NjI2NjI2MzV9.rENH3Zk9tl81o2MpBBR4hmE--FM0YQlZMTMdLOLWrKY
-
 
 {
     "comment": "juudas"
